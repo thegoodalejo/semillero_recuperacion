@@ -98,7 +98,32 @@ public class ExposicionPerros
      */
     public void ordenarPorPuntos( )
     {
-    	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
+        int inicial;
+
+        for( inicial = 0; inicial < perros.size( ); inicial++ )
+        {
+            int posicionMenor = inicial;
+            Perro perroMenosP = ( Perro )perros.get( inicial );
+
+            for( int i = inicial + 1; i < perros.size( ); i++ )
+            {
+                Perro perroPosicion = ( Perro )perros.get( i );
+
+                if( perroPosicion.compararPorPuntos( perroMenosP ) < 0 )
+                {
+                    perroMenosP = perroPosicion;
+                    posicionMenor = i;
+                }
+            }
+
+            if( posicionMenor != inicial )
+            {
+                Perro temp = ( Perro )perros.get( inicial );
+                perros.set( inicial, perroMenosP );
+                perros.set( posicionMenor, temp );
+            }
+
+        }
         verificarInvariante( );
     }
 
