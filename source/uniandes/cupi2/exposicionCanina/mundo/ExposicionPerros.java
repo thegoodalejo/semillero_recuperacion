@@ -99,7 +99,23 @@ public class ExposicionPerros
     public void ordenarPorPuntos( )
     {
     	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
+    	for( int i = perros.size( ); i > 0; i-- )
+        {
+            for( int j = 0; j < i - 1; j++ )
+            {
+                Perro p1 = ( Perro )perros.get( j );
+                Perro p2 = ( Perro )perros.get( j + 1 );
+
+                // Si es necesario se deben intercambiar p1 y p2
+                if( p1.compararPorPuntos( p2 ) > 0 )
+                {
+                    perros.set( j, p2 );
+                    perros.set( j + 1, p1 );
+                }
+            }
+        }
         verificarInvariante( );
+        
     }
 
     /**
@@ -109,11 +125,6 @@ public class ExposicionPerros
     public void ordenarPorEdad( )
     {
         int inicial;
-
-        // En cada iteración se sabe que:
-        // 1. Todos los valores antes de perros[inicial] están ordenados por edad
-        // 2. No hay ningún valor después de perros[inicial-1] que sea menor que perros[inicial-1]
-        // En cada iteración se busca el menor entre perros[inicial] y perros[final] y se ubica en perros[inicial]
 
         for( inicial = 0; inicial < perros.size( ); inicial++ )
         {
@@ -228,8 +239,29 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-        return 1;
-    }
+    	int posicion = -1;
+    	int aux = perros.size( );
+    	
+    	for( int i = aux; i > 0; i-- )
+        {
+            for( int j = 0; j < i - 1; j++ )
+            {
+                Perro p1 = ( Perro )perros.get( j );
+                Perro p2 = ( Perro )perros.get( j + 1 );
+
+                // Si es necesario se deben intercambiar p1 y p2
+                if( p1.compararPorPuntos( p2 ) > 0 )
+                {
+                    perros.set( j, p2 );
+                    perros.set( j + 1, p1 );
+                }
+            }
+            posicion = aux -1;
+        }
+    	return posicion;
+    	
+    	    	
+      }
 
     /**
      * Busca el perro que tenga el menor puntaje en la exposición.
@@ -237,7 +269,26 @@ public class ExposicionPerros
      */
     public int buscarPerroMenorPuntaje( )
     {
-        return 1;
+    	int posicion = -1;
+    	int aux = perros.size( );
+    	
+    	for( int i = aux; i > 0; i-- )
+        {
+            for( int j = 0; j < i - 1; j++ )
+            {
+                Perro p1 = ( Perro )perros.get( j );
+                Perro p2 = ( Perro )perros.get( j + 1 );
+
+                // Si es necesario se deben intercambiar p1 y p2
+                if( p1.compararPorPuntos( p2 ) > 0 )
+                {
+                    perros.set( j, p2 );
+                    perros.set( j + 1, p1 );
+                }
+            }
+            posicion = 0;
+        }
+    	return posicion;
     }
 
     /**
@@ -246,7 +297,38 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-        return 1;
+    	int inicial;
+
+        for( inicial = 0; inicial < perros.size( ); inicial++ )
+        {
+            int posicionMenor = inicial;
+            Perro perroMenor = ( Perro )perros.get( inicial );
+
+            // Buscar el perro de menor edad entre inicial y final
+            for( int i = inicial + 1; i < perros.size( ); i++ )
+            {
+                Perro perroPosicion = ( Perro )perros.get( i );
+
+                // El perro de la posición actual es menor que el menor encontrado hasta el momento
+                if( perroPosicion.compararPorEdad( perroMenor ) < 0 )
+                {
+                    perroMenor = perroPosicion;
+                    posicionMenor = i;
+                }
+            }
+
+            if( posicionMenor != inicial )
+            {
+                Perro temp = ( Perro )perros.get( inicial );
+                perros.set( inicial, perroMenor );
+                perros.set( posicionMenor, temp );
+            }
+
+        }
+        return perros.size( ) -1;
+    	
+    	
+    	
     }
 
     // -----------------------------------------------------------------
