@@ -243,8 +243,13 @@ public class ExposicionPerros
         perros.add( nuevoPerro );
 
         verificarInvariante( );
-
-        return true;
+        if (!buscarPerrosConNombresRepetidos( )) {
+        	return true;
+        }
+        else {
+        	return false;
+        }
+        
     }
 
     /**
