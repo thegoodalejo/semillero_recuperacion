@@ -226,11 +226,12 @@ public class ExposicionPerros
     public boolean agregarPerro( String nombreP, String razaP, String imagenP, int puntosP, int edadP )
     {
     	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
+    	
         perros.add( nuevoPerro );
-
-        verificarInvariante( );
-
-        return true;
+        
+        boolean aux = buscarPerrosConNombresRepetidos( );
+        
+        return aux;
     }
 
     /**
@@ -339,7 +340,7 @@ public class ExposicionPerros
      * Verifica el invariante de la clase. <br>
      * <b>inv </b> perros != null y no hay dos perros con el mismo nombre
      */
-    private void verificarInvariante( )
+    public void verificarInvariante( )
     {
         assert ( perros != null ) : "La lista de perros no debe ser null";
         assert ( !buscarPerrosConNombresRepetidos( ) ) : "Hay dos perros con el mismo nombre";
@@ -349,7 +350,7 @@ public class ExposicionPerros
      * Verifica si hay dos perros con el mismo nombre.
      * @return Retorna true si hay dos perros con el mismo nombre, retorna false en caso contrario
      */
-    private boolean buscarPerrosConNombresRepetidos( )
+    public boolean buscarPerrosConNombresRepetidos( )
     {
         for( int i = 0; i < perros.size( ); i++ )
         {
@@ -361,12 +362,12 @@ public class ExposicionPerros
                     Perro perroJ = ( Perro )perros.get( j );
                     if( perroJ.darNombre( ).equals( perroI.darNombre( ) ) )
                     {
-                        return true;
+                        return false;
                     }
                 }
             }
         }
-        return false;
+        return true;
     }
 
     // -----------------------------------------------------------------
