@@ -9,7 +9,7 @@ import javax.swing.*;
 import uniandes.cupi2.exposicionCanina.mundo.*;
 
 /**
- * Es la clase principal de la interfaz
+ * Es la clase principal de la interfaz camabio
  */
 public class InterfazExposicionCanina extends JFrame
 {
