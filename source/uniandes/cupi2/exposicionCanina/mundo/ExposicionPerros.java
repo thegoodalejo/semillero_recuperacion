@@ -2,6 +2,8 @@ package uniandes.cupi2.exposicionCanina.mundo;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 /**
  * Es la clase que se encarga de manejar, organizar, cargar y salvar los perros. <br>
  * <b>inv: </b> <br>
@@ -98,6 +100,27 @@ public class ExposicionPerros
      */
     public void ordenarPorPuntos( )
     {
+    	for( int i = 0; i < perros.size( ); i++ ) {
+			int menor = i;
+			Perro perroMenor = ( Perro )perros.get(i);
+			for( int j = i + 1; j < perros.size( ); j++ ) {
+				Perro perroActual = ( Perro )perros.get( j );
+				if( perroActual.compararPorPuntos( perroMenor ) < 0 )
+	            {
+	                    perroMenor = perroActual;
+	                    menor = j;
+	            }
+	        }
+
+	            if( menor != i )
+	            {
+	                Perro aux = ( Perro )perros.get( i );
+	                perros.set( i, perroMenor );
+	                perros.set( menor, aux );
+	            }
+
+	      }
+			
     	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
         verificarInvariante( );
     }
@@ -214,12 +237,21 @@ public class ExposicionPerros
      */
     public boolean agregarPerro( String nombreP, String razaP, String imagenP, int puntosP, int edadP )
     {
-    	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
-        perros.add( nuevoPerro );
+    	for (int i = 0; i < perros.size(); i++) {
+    		Perro perro = (Perro)perros.get(i);
+			if (nombreP.equals(perro.darNombre())) {
+				JOptionPane.showMessageDialog(null, "El nombre ya existe");
+				return false;
+			} else {
+				Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
+		        perros.add( nuevoPerro );
 
-        verificarInvariante( );
-
+		        verificarInvariante( );
+			}
+ 
         return true;
+    	}
+    	return true;
     }
 
     /**
@@ -228,7 +260,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-        return 1;
+    	int puntaje = 0;
+    	int posicion = 0;
+    	for (int i = 0; i < perros.size(); i++) {
+			Perro perro = (Perro)perros.get(i);
+			if (perro.darPuntos()>puntaje) {
+				posicion = i;
+			}
+		}
+        return posicion;
     }
 
     /**
@@ -237,7 +277,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMenorPuntaje( )
     {
-        return 1;
+    	int puntaje = 100000;
+    	int posicion = 0;
+    	for (int i = 0; i < perros.size(); i++) {
+			Perro perro = (Perro)perros.get(i);
+			if (perro.darPuntos()<puntaje) {
+				posicion = i;
+			}
+		}
+        return posicion;
     }
 
     /**
@@ -246,7 +294,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-        return 1;
+    	int edad = 0;
+    	int posicion = 0;
+    	for (int i = 0; i < perros.size(); i++) {
+			Perro perro = (Perro)perros.get(i);
+			if (perro.darEdad()>edad) {
+				posicion = i;
+			}
+		}
+        return posicion;
     }
 
     // -----------------------------------------------------------------
