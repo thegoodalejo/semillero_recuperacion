@@ -2,9 +2,6 @@ package uniandes.cupi2.exposicionCanina.mundo;
 
 import java.util.*;
 
-import edu.jabs.canina.mundo.Perro;
-
-
 /**
  * Es la clase que se encarga de manejar, organizar, cargar y salvar los perros. <br>
  * <b>inv: </b> <br>
@@ -54,7 +51,7 @@ public class ExposicionPerros
      */
     public void ordenarPorRaza( )
     {
-    	for( int i = perros.size( ); i > 0; i-- )
+        for( int i = perros.size( ); i > 0; i-- )
         {
             for( int j = 0; j < i - 1; j++ )
             {
@@ -78,7 +75,7 @@ public class ExposicionPerros
      */
     public void ordenarPorNombre( )
     {
-    	for( int i = perros.size( ); i > 0; i-- )
+        for( int i = perros.size( ); i > 0; i-- )
         {
             for( int j = 0; j < i - 1; j++ )
             {
@@ -102,22 +99,6 @@ public class ExposicionPerros
     public void ordenarPorPuntos( )
     {
     	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
-    	for( int i = 1; i < perros.size( ); i++ )
-        {
-            Perro porInsertar = ( Perro )perros.get( i );
-            boolean termino = false;
-            for( int j = i; j > 0 && !termino; j-- )
-            {
-                Perro actual = ( Perro )perros.get( j - 1 );
-                if( actual.compararPorPuntos( porInsertar ) > 0 )
-                {
-                    perros.set( j, actual );
-                    perros.set( j - 1, porInsertar );
-                }
-                else
-                    termino = true;
-            }
-        }
         verificarInvariante( );
     }
 
@@ -233,10 +214,9 @@ public class ExposicionPerros
      */
     public boolean agregarPerro( String nombreP, String razaP, String imagenP, int puntosP, int edadP )
     {
-    	if ( buscarPerro(nombreP) == -1) {
-	    	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
-	        perros.add( nuevoPerro );
-    	}
+    	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
+        perros.add( nuevoPerro );
+
         verificarInvariante( );
 
         return true;
@@ -248,55 +228,16 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-    	int posicion = -1;
-
-        if( perros.size( ) > 0 )
-        {
-            Perro pMayorPuntaje = ( Perro )perros.get( 0 );
-            posicion = 0;
-            for( int i = 1; i < perros.size( ); i++ )
-            {
-                Perro perroPosicion = ( Perro )perros.get( i );
-
-                // Los nombres son iguales
-                if( pMayorPuntaje.compararPorPuntos( perroPosicion ) == -1 )
-                {
-                    posicion = i;
-                    pMayorPuntaje = perroPosicion;
-                }
-            }
-        }
-
-        return posicion;
+        return 1;
     }
 
     /**
      * Busca el perro que tenga el menor puntaje en la exposición.
      * @return Retorna la posición donde se encuentra el perro con el menor puntaje. Si no hay perros en la exposición se retorna -1
      */
-    public int buscarPerroMenorPuntaje( ) 
+    public int buscarPerroMenorPuntaje( )
     {
-    
-    	int posicion = -1;
-
-        if( perros.size() > 0 )
-        {
-            Perro pMenorPuntaje = (Perro)perros.get(0);
-            posicion = 0;
-            for( int i = 1; i < perros.size(); i++)
-            {
-                Perro perroPosicion = ( Perro )perros.get(i);
-
-                // Los nombres son iguales
-                if( pMenorPuntaje.compararPorPuntos( perroPosicion ) == 1 )
-                {
-                    posicion = i;
-                    pMenorPuntaje = perroPosicion;
-                }
-            }
-        }
-
-        return posicion;
+        return 1;
     }
 
     /**
@@ -305,26 +246,7 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-    	int posicion = -1;
-
-        if( perros.size( ) > 0 )
-        {
-            Perro pMayorEdad = ( Perro )perros.get( 0 );
-            posicion = 0;
-            for( int i = 1; i < perros.size( ); i++ )
-            {
-                Perro perroPosicion = ( Perro )perros.get( i );
-
-                // Los nombres son iguales
-                if( pMayorEdad.compararPorEdad( perroPosicion ) == -1 )
-                {
-                    posicion = i;
-                    pMayorEdad = perroPosicion;
-                }
-            }
-        }
-
-        return posicion;
+        return 1;
     }
 
     // -----------------------------------------------------------------
