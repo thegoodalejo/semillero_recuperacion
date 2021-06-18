@@ -258,7 +258,8 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-        return 1;
+    	ordenarPorPuntos();
+        return (perros.size( ) - 1);
     }
 
     /**
@@ -267,7 +268,8 @@ public class ExposicionPerros
      */
     public int buscarPerroMenorPuntaje( )
     {
-        return 1;
+    	ordenarPorPuntos();
+        return 0;
     }
 
     /**
@@ -276,7 +278,8 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-        return 1;
+    	ordenarPorEdad();
+        return (perros.size( ) - 1);
     }
 
     // -----------------------------------------------------------------
