@@ -240,9 +240,9 @@ public class PanelAgregarPerro extends JPanel implements ActionListener
                 int puntos = Integer.parseInt( txtPuntos.getText( ) );
                 int edad = Integer.parseInt( txtEdad.getText( ) );
 
-                if( nombre == null || nombre.equals( "" ) )
+                if( nombre == null || nombre.equals( "" ) || principal.validarNuevoNombre(nombre)>=0)
                 {
-                    JOptionPane.showMessageDialog( this, "Debe ingresar el nombre del perro", "Error", JOptionPane.ERROR_MESSAGE );
+                	JOptionPane.showMessageDialog( this, "Debe ingresar el nombre del perro o ya existe", "Error", JOptionPane.ERROR_MESSAGE );
                 }
                 else if( raza == null || raza.equals( "" ) )
                 {

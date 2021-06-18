@@ -155,6 +155,10 @@ public class InterfazExposicionCanina extends JFrame
     // Métodos
     // -----------------------------------------------------------------
 
+    public int validarNuevoNombre(String nombrep) {
+    	return exposicion.buscarPerro(nombrep);
+    }
+    
     /**
      * Actualiza la lista de perros mostrada.
      */
