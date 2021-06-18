@@ -250,10 +250,14 @@ public class ExposicionPerros
     {
     	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
     	perros.add( nuevoPerro );
-    	
-        verificarInvariante( );
+    	boolean aceptar=!buscarPerrosConNombresRepetidos( );
+    	if (!aceptar) {
+    		perros.remove(perros.size()-1);
+    	}
+    	//verificarInvariante( );
+        
 
-        return true;
+        return aceptar;
     }
 
     /**
@@ -337,6 +341,7 @@ public class ExposicionPerros
      */
     private boolean buscarPerrosConNombresRepetidos( )
     {
+    	
         for( int i = 0; i < perros.size( ); i++ )
         {
             Perro perroI = ( Perro )perros.get( i );
@@ -345,7 +350,7 @@ public class ExposicionPerros
                 if( i != j )
                 {
                     Perro perroJ = ( Perro )perros.get( j );
-                    if( perroJ.darNombre( ).equals( perroI.darNombre( ) ) )
+                    if( perroJ.darNombre().equals( perroI.darNombre() ) )
                     {
                         return true;
                     }
