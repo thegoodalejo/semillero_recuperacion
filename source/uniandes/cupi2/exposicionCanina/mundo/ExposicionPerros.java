@@ -244,7 +244,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-        return 1;
+    	int mayorPunt = 0, indiceMayor = 0;
+    	for( int i = 0; i < perros.size( ); i++ ){
+    		Perro p = ( Perro )perros.get( i );
+    		if (p.darPuntos() > mayorPunt) {
+    			mayorPunt = p.darPuntos();
+    			indiceMayor = i;
+    		}
+        }
+        return indiceMayor;
     }
 
     /**
@@ -253,7 +261,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMenorPuntaje( )
     {
-        return 1;
+    	int menorPunt = 100, indiceMenor = 0;
+    	for( int i = 0; i < perros.size( ); i++ ){
+    		Perro p = ( Perro )perros.get( i );
+    		if (p.darPuntos() < menorPunt) {
+    			menorPunt = p.darPuntos();
+    			indiceMenor = i;
+    		}
+        }
+        return indiceMenor;
     }
 
     /**
@@ -262,7 +278,15 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-        return 1;
+    	int mayorEdad = 0, indiceMayor = 0;
+    	for( int i = 0; i < perros.size( ); i++ ){
+    		Perro p = ( Perro )perros.get( i );
+    		if (p.darPuntos() > mayorEdad) {
+    			mayorEdad = p.darPuntos();
+    			indiceMayor = i;
+    		}
+        }
+        return indiceMayor;
     }
 
     // -----------------------------------------------------------------
