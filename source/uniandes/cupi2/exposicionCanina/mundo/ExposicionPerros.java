@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+import edu.jabs.canina.mundo.Perro;
+
 
 /**
  * Es la clase que se encarga de manejar, organizar, cargar y salvar los perros. <br>
@@ -102,6 +104,22 @@ public class ExposicionPerros
     public void ordenarPorPuntos( )
     {
     	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
+    	for( int i = 1; i < perros.size( ); i++ )
+        {
+            Perro porInsertar = ( Perro )perros.get( i );
+            boolean termino = false;
+            for( int j = i; j > 0 && !termino; j-- )
+            {
+                Perro actual = ( Perro )perros.get( j - 1 );
+                if( actual.compararPorPuntos( porInsertar ) > 0 )
+                {
+                    perros.set( j, actual );
+                    perros.set( j - 1, porInsertar );
+                }
+                else
+                    termino = true;
+            }
+        }
         verificarInvariante( );
     }
 
@@ -111,12 +129,12 @@ public class ExposicionPerros
      */
     public void ordenarPorEdad( )
     {
-        int inicial;
+    	int inicial;
 
-        // En cada iteración se sabe que:
-        // 1. Todos los valores antes de perros[inicial] están ordenados por edad
-        // 2. No hay ningún valor después de perros[inicial-1] que sea menor que perros[inicial-1]
-        // En cada iteración se busca el menor entre perros[inicial] y perros[final] y se ubica en perros[inicial]
+        // En cada iteraciÃ³n se sabe que:
+        // 1. Todos los valores antes de perros[inicial] estÃ¡n ordenados por edad
+        // 2. No hay ningÃºn valor despuÃ©s de perros[inicial-1] que sea menor que perros[inicial-1]
+        // En cada iteraciÃ³n se busca el menor entre perros[inicial] y perros[final] y se ubica en perros[inicial]
 
         for( inicial = 0; inicial < perros.size( ); inicial++ )
         {
@@ -128,7 +146,7 @@ public class ExposicionPerros
             {
                 Perro perroPosicion = ( Perro )perros.get( i );
 
-                // El perro de la posición actual es menor que el menor encontrado hasta el momento
+                // El perro de la posiciÃ³n actual es menor que el menor encontrado hasta el momento
                 if( perroPosicion.compararPorEdad( perroMenor ) < 0 )
                 {
                     perroMenor = perroPosicion;
