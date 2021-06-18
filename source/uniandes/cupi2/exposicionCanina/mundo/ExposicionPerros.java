@@ -99,6 +99,40 @@ public class ExposicionPerros
     public void ordenarPorPuntos( )
     {
     	// usar meteodo compararPorPuntos que esta en la Clase Perro.java
+    	int inicial;
+
+        // En cada iteración se sabe que:
+        // 1. Todos los valores antes de perros[inicial] están ordenados por edad
+        // 2. No hay ningún valor después de perros[inicial-1] que sea menor que perros[inicial-1]
+        // En cada iteración se busca el menor entre perros[inicial] y perros[final] y se ubica en perros[inicial]
+
+        for( inicial = 0; inicial < perros.size( ); inicial++ )
+        {
+            int posicionMenor = inicial;
+            Perro perroMenor = ( Perro )perros.get( inicial );
+
+            // Buscar el perro de menor edad entre inicial y final
+            for( int i = inicial + 1; i < perros.size( ); i++ )
+            {
+                Perro perroPosicion = ( Perro )perros.get( i );
+
+                // El perro de la posición actual es menor que el menor encontrado hasta el momento
+                if( perroPosicion.compararPorPuntos( perroMenor ) < 0 )
+                {
+                    perroMenor = perroPosicion;
+                    posicionMenor = i;
+                }
+            }
+
+            if( posicionMenor != inicial )
+            {
+                Perro temp = ( Perro )perros.get( inicial );
+                perros.set( inicial, perroMenor );
+                perros.set( posicionMenor, temp );
+            }
+
+        }
+    	
         verificarInvariante( );
     }
 
@@ -215,7 +249,8 @@ public class ExposicionPerros
     public boolean agregarPerro( String nombreP, String razaP, String imagenP, int puntosP, int edadP )
     {
     	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
-        perros.add( nuevoPerro );
+    	perros.add( nuevoPerro );
+    	
 
         verificarInvariante( );
 
@@ -228,7 +263,18 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorPuntaje( )
     {
-        return 1;
+    	Perro perroAuxiliar = ( Perro )perros.get(0);
+    	int puntaje=perroAuxiliar.darPuntos();
+    	int posicion =0;
+    	for(int i=1;i<perros.size();i++) {
+    		Perro perroActual = ( Perro )perros.get(i);
+    		if(puntaje<perroActual.darPuntos()) {
+    			puntaje=perroActual.darPuntos();
+    			posicion=i;
+    			
+    		}
+    	}
+        return posicion;
     }
 
     /**
@@ -237,7 +283,18 @@ public class ExposicionPerros
      */
     public int buscarPerroMenorPuntaje( )
     {
-        return 1;
+    	Perro perroAuxiliar = ( Perro )perros.get(0);
+    	int puntaje=perroAuxiliar.darPuntos();
+    	int posicion =0;
+    	for(int i=1;i<perros.size();i++) {
+    		Perro perroActual = ( Perro )perros.get(i);
+    		if(puntaje>perroActual.darPuntos()) {
+    			puntaje=perroActual.darPuntos();
+    			posicion=i;
+    			
+    		}
+    	}
+        return posicion;
     }
 
     /**
@@ -246,7 +303,19 @@ public class ExposicionPerros
      */
     public int buscarPerroMayorEdad( )
     {
-        return 1;
+    	Perro perroAuxiliar = ( Perro )perros.get(0);
+    	int puntaje=perroAuxiliar.darEdad();
+    	int posicion =0;
+    	for(int i=1;i<perros.size();i++) {
+    		Perro perroActual = ( Perro )perros.get(i);
+    		if(puntaje<perroActual.darEdad()) {
+    			puntaje=perroActual.darEdad();
+    			posicion=i;
+    			
+    		}
+    	}
+        return posicion;
+     
     }
 
     // -----------------------------------------------------------------
