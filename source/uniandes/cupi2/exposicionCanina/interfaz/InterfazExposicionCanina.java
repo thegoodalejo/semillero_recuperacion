@@ -6,6 +6,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import edu.jabs.canina.mundo.Perro;
 import uniandes.cupi2.exposicionCanina.mundo.*;
 
 /**
