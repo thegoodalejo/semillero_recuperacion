@@ -103,6 +103,7 @@ public class PanelDatosPerro extends JPanel
         etiquetaNombre = new JLabel( "Nombre: " );
         txtNombre = new JTextField( );
         txtNombre.setEnabled( false );
+        txtNombre.setDisabledTextColor(getForeground());
         panelDatosTexto.add( etiquetaNombre );
         panelDatosTexto.add( txtNombre );
 
@@ -110,12 +111,14 @@ public class PanelDatosPerro extends JPanel
         etiquetaRaza.setBorder( new EmptyBorder( 0, 5, 0, 0 ) );
         txtRaza = new JTextField( );
         txtRaza.setEnabled( false );
+        txtRaza.setDisabledTextColor(getForeground());
         panelDatosTexto.add( etiquetaRaza );
         panelDatosTexto.add( txtRaza );
 
         etiquetaEdad = new JLabel( "Edad: " );
         txtEdad = new JTextField( );
         txtEdad.setEnabled( false );
+        txtEdad.setDisabledTextColor(getForeground());
         panelDatosTexto.add( etiquetaEdad );
         panelDatosTexto.add( txtEdad );
 
@@ -123,6 +126,7 @@ public class PanelDatosPerro extends JPanel
         etiquetaPuntos.setBorder( new EmptyBorder( 0, 5, 0, 0 ) );
         txtAltura = new JTextField( );
         txtAltura.setEnabled( false );
+        txtAltura.setDisabledTextColor(getForeground());
         panelDatosTexto.add( etiquetaPuntos );
         panelDatosTexto.add( txtAltura );
 
