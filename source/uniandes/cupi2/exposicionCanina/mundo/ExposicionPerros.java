@@ -251,7 +251,6 @@ public class ExposicionPerros
     	Perro nuevoPerro = new Perro( nombreP, razaP, imagenP, puntosP, edadP );
     	perros.add( nuevoPerro );
     	
-
         verificarInvariante( );
 
         return true;
